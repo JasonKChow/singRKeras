@@ -18,6 +18,15 @@ iris.test <- iris[ind == 2, 1:4]
 iris.trainingtarget <- iris[ind == 1, 5]
 iris.testtarget <- iris[ind == 2, 5]
 
+# Xhange labels
+iris[,5] <- as.numeric(iris[,5]) -1
+
+# Turn `iris` into a matrix
+iris <- as.matrix(iris)
+
+# Set iris `dimnames` to `NULL`
+dimnames(iris) <- NULL
+
 # One hot encode training target values
 iris.trainLabels <- to_categorical(iris.trainingtarget)
 
