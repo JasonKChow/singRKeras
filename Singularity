@@ -27,7 +27,10 @@ IncludeCmd: yes
   apt-get install -y \
 	r-base \
 	locales \
-	language-pack-en
+	language-pack-en \
+	libpython2.7 \
+	python-pip \
+	python-virtualenv
 
   # install keras
   echo install.packages\(\"keras\"\, repos\=\'https://cloud.r-project.org/\'\) | R --slave
