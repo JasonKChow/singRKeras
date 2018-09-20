@@ -34,3 +34,4 @@ IncludeCmd: yes
 
   # install keras
   echo install.packages\(\"keras\"\, repos\=\'https://cloud.r-project.org/\'\) | R --slave
+  echo keras::install_keras\(\) | R --slave
