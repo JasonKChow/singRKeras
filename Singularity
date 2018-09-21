@@ -24,6 +24,7 @@ IncludeCmd: yes
   exec R "$@"
 
 %post
+  # R and Keras base things
   apt-get update
   apt-get install -y software-properties-common
   add-apt-repository "deb http://cloud.r-project.org/bin/linux/ubuntu xenial/"
@@ -35,7 +36,16 @@ IncludeCmd: yes
 	language-pack-en \
 	libpython2.7 \
 	python-pip \
-	python-virtualenv
+	python-virtualenv \
+  wget 
+
+  # Cuda support
+  apt-get install linux-headers-$(uname -r)
+  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
+  dpkg -i cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
+  apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
+  apt-get update
+  apt-get install -y cuda-9-0
 
   # install keras
   echo install.packages\(\"keras\"\, repos\=\'https://cloud.r-project.org/\'\) | R --slave
