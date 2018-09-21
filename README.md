@@ -2,10 +2,10 @@
 
 A singularity recipe to build R for the use with Keras.
 
-To build:
+To build (requires root):
 ```
 cd ~/singRKeras
-singularity build RKeras.simg Singularity
+sudo singularity build RKeras.simg Singularity
 ```
 
 To use:
