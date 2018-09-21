@@ -1,3 +1,4 @@
+# Quick test from: https://www.datacamp.com/community/tutorials/keras-r-deep-learning
 #### Load environment ####
 library(keras)
 
@@ -61,4 +62,4 @@ history <- model %>% fit(
 )
 
 #### Outputs ####
-save_model_hdf5(model, 'test_mode.h5')
+save_model_hdf5(model, 'test_model.h5')
