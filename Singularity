@@ -46,11 +46,7 @@ IncludeCmd: yes
 	libpython2.7 \
 	python-pip \
 	python-virtualenv \
-  wget
-
-  # Graphics driver
-  wget http://us.download.nvidia.com/XFree86/Linux-x86_64/295.59/NVIDIA-Linux-x86_64-295.59.run
-  sh ./NVIDIA-Linux-x86_64-295.59.run
+	wget
 
   # Cuda support
   apt-get install -y linux-headers-$(uname -r)
