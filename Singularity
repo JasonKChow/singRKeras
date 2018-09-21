@@ -9,6 +9,11 @@ IncludeCmd: yes
   R_CONFIG_DIR=/etc/R/
   export R_CONFIG_DIR
 
+%labels
+  Author Jason Chow
+  Version v0.01
+  Forked https://github.com/remyd1/ubuntu-r-base
+
 %apprun R
   exec R "$@"
 
