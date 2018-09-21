@@ -24,7 +24,7 @@ IncludeCmd: yes
   exec R "$@"
 
 %files
-  libcudnn7_7.3.0.29-1+cuda9.0_amd64.deb ~/libcudnn7_7.3.0.29-1+cuda9.0_amd64.deb
+  libcudnn7_7.3.0.29-1+cuda9.0_amd64.deb
 
 %post
   # R and Keras base things
