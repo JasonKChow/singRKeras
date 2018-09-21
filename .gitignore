@@ -1,3 +1,4 @@
 local/
 *.simg
 *.h5
+*.deb

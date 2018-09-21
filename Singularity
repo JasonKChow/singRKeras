@@ -23,6 +23,9 @@ IncludeCmd: yes
 %runscript
   exec R "$@"
 
+%files
+  libcudnn7_7.3.0.29-1+cuda9.0_amd64.deb ~/libcudnn7_7.3.0.29-1+cuda9.0_amd64.deb
+
 %post
   # R and Keras base things
   apt-get update
@@ -37,10 +40,10 @@ IncludeCmd: yes
 	libpython2.7 \
 	python-pip \
 	python-virtualenv \
-  wget 
+  wget
 
   # Cuda support
-  apt-get install linux-headers-$(uname -r)
+  apt-get install -y linux-headers-$(uname -r)
   wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
   dpkg -i cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
   apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
