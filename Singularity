@@ -8,7 +8,13 @@ IncludeCmd: yes
   export R_VERSION
   R_CONFIG_DIR=/etc/R/
   export R_CONFIG_DIR
-
+  CUDA_HOME=/usr/local/cuda
+  export CUDA_HOME
+  LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${CUDA_HOME}/lib64
+  export LD_LIBRARY_PATH
+  PATH=${CUDA_HOME}/bin:${PATH}
+  export PATH
+  
 %labels
   Author Jason Chow
   Version v0.01
@@ -49,6 +55,8 @@ IncludeCmd: yes
   apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
   apt-get update
   apt-get install -y cuda-9-0
+  dpkg -i libcudnn7_7.3.0.29-1+cuda9.0_amd64.deb
+  apt-get install -y libcupti-dev
 
   # install keras
   echo install.packages\(\"keras\"\, repos\=\'https://cloud.r-project.org/\'\) | R --slave
