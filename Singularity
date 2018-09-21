@@ -14,7 +14,7 @@ IncludeCmd: yes
   export LD_LIBRARY_PATH
   PATH=${CUDA_HOME}/bin:${PATH}
   export PATH
-  
+
 %labels
   Author Jason Chow
   Version v0.01
@@ -48,6 +48,10 @@ IncludeCmd: yes
 	python-virtualenv \
   wget
 
+  # Graphics driver
+  wget http://us.download.nvidia.com/XFree86/Linux-x86_64/295.59/NVIDIA-Linux-x86_64-295.59.run
+  sh ./NVIDIA-Linux-x86_64-295.59.run
+
   # Cuda support
   apt-get install -y linux-headers-$(uname -r)
   wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
@@ -60,4 +64,4 @@ IncludeCmd: yes
 
   # install keras
   echo install.packages\(\"keras\"\, repos\=\'https://cloud.r-project.org/\'\) | R --slave
-  echo keras::install_keras\(\) | R --slave
+  echo keras::install_keras\(tensorflow \= \"gpu\"\) | R --slave
