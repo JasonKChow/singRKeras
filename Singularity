@@ -55,7 +55,7 @@ IncludeCmd: yes
   apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
   apt-get update
   apt-get install -y cuda-9-0
-  dpkg -i libcudnn7_7.3.0.29-1+cuda9.0_amd64.deb
+  dpkg -i libcudnn7_*
   apt-get install -y libcupti-dev
 
   # install keras
