@@ -30,7 +30,7 @@ IncludeCmd: yes
   exec R "$@"
 
 %files
-  libcudnn7_*
+  libcudnn.deb
 
 %post
   # R and Keras base things
@@ -50,12 +50,15 @@ IncludeCmd: yes
 
   # Cuda support
   apt-get install -y linux-headers-$(uname -r)
-  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
-  dpkg -i cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
-  apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
+  wget https://developer.download.nvidia.com/compute/cuda/9.0/secure/Prod/local_installers/cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64.deb?6aK0g2RZ_jYpt-QPB0NupBEeUABdyWFcaqnIi4rwMFBQIhFyCDXY-VD0WUOr5OWRgoj85G0NKjSSUy4Eqly0sdmjj9AwCfbFIVAEwZxvGcamdPqUvaQY73xKneDObp4hcRhFR8VwcP3ACWpVnU_x9K0mleTlirm7mEdDDbjOnskOnnkdWt3V0M-yKa2dMtf6tDhNg2coiTuXAm_3w06C
+  dpkg -i cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64.deb
+  apt-key add /var/cuda-repo-9-0-local_9.0.176-1/7fa2af80.pub
   apt-get update
-  apt-get install -y cuda-9-0
-  dpkg -i libcudnn7_*
+  apt-get install -y cuda
+
+  # cudnn
+  dpkg -i libcudnn.deb
+  apt-get update
   apt-get install -y libcupti-dev
 
   # install keras
