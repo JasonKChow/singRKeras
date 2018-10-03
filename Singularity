@@ -31,6 +31,7 @@ IncludeCmd: yes
 
 %files
   libcudnn.deb
+  cuda.deb
 
 %post
   # R and Keras base things
@@ -50,9 +51,8 @@ IncludeCmd: yes
 
   # Cuda support
   apt-get install -y linux-headers-$(uname -r)
-  wget https://developer.download.nvidia.com/compute/cuda/9.0/secure/Prod/local_installers/cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64.deb?6aK0g2RZ_jYpt-QPB0NupBEeUABdyWFcaqnIi4rwMFBQIhFyCDXY-VD0WUOr5OWRgoj85G0NKjSSUy4Eqly0sdmjj9AwCfbFIVAEwZxvGcamdPqUvaQY73xKneDObp4hcRhFR8VwcP3ACWpVnU_x9K0mleTlirm7mEdDDbjOnskOnnkdWt3V0M-yKa2dMtf6tDhNg2coiTuXAm_3w06C
-  dpkg -i cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64.deb
-  apt-key add /var/cuda-repo-9-0-local_9.0.176-1/7fa2af80.pub
+  dpkg -i cuda.deb
+  apt-key add /var/cuda-repo-9-0-local/7fa2af80.pub
   apt-get update
   apt-get install -y cuda
 
@@ -64,3 +64,6 @@ IncludeCmd: yes
   # install keras
   echo install.packages\(\"keras\"\, repos\=\'https://cloud.r-project.org/\'\) | R --slave
   echo keras::install_keras\(tensorflow \= \"gpu\"\) | R --slave
+
+  # Start nvidia cuda mps server
+  nvidia-cuda-mps-server
