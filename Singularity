@@ -67,3 +67,6 @@ IncludeCmd: yes
 
   # Start nvidia cuda mps server
   nvidia-cuda-mps-server
+
+  # ACCRE binding points
+  mkdir /scratch /data /gpfs22 /gpfs23
